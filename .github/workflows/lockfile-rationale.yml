@@ -12,7 +12,7 @@ jobs:
       pull-requests: read
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
-      - uses: tj-actions/changed-files@48d8f15b2aaa3d255ca5af3eba4870f807ce6b3c
+      - uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323
         id: changed
       - uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b
         if: contains(steps.changed.outputs.all_changed_files, 'pnpm-lock.yaml') || contains(steps.changed.outputs.all_changed_files, 'package-lock.json') || contains(steps.changed.outputs.all_changed_files, 'yarn.lock')
