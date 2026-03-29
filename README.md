@@ -1,123 +1,65 @@
 # LegalDocsReview
 
-AI-assisted legal document review desktop app built with Tauri + React.
+[![Rust](https://img.shields.io/badge/Rust-dea584?style=flat-square&logo=rust)](#) [![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript)](#) [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](#)
 
-## What It Does
+> Review contracts and legal documents on your own machine — AI-assisted clause extraction and risk scoring without uploading sensitive docs to a cloud service.
 
-- Upload PDFs (stored locally in the app data directory)
-- Extract text from PDFs
-- Extract key clauses and fields
-- Generate risk scoring / risk distribution
-- Compare two documents
-- Manage analysis templates
-- Generate review reports
+LegalDocsReview is a native desktop app built on Tauri + React + Rust. Upload PDFs, extract text and key clauses locally, score risk, compare two documents side by side, and generate review reports — all with optional AI assistance via OpenAI or Anthropic Claude. Documents and analysis stay on your machine in a local SQLite database.
 
-AI providers supported:
+## Features
 
-- OpenAI (Chat Completions API)
-- Anthropic Claude (Messages API)
+- **PDF ingestion** — upload and store PDFs locally; text extracted in Rust
+- **Clause extraction** — key clauses and fields identified automatically
+- **Risk scoring** — risk distribution per document with visual breakdowns
+- **Document comparison** — diff two contracts to surface changed or missing clauses
+- **Analysis templates** — reusable review templates for different document types
+- **Review reports** — exportable reports summarizing findings
+- **Dual AI support** — OpenAI Chat Completions or Anthropic Claude Messages API (API key stored locally)
 
-## Tech Stack
+## Quick Start
 
-- Tauri v2 (Rust backend)
-- React + Vite + TypeScript (frontend)
-- Tailwind CSS
-- SQLite (via `rusqlite`, stored in app data dir as `legal_docs_review.db`)
-- Vitest (tests)
+### Prerequisites
 
-## Development
+- Node.js 18+
+- `pnpm`
+- Rust stable toolchain (`rustup`)
+- Tauri system dependencies: [tauri.app/start/prerequisites](https://tauri.app/start/prerequisites/)
 
-Prerequisites:
+### Installation
 
-- Node.js + `pnpm`
-- Rust toolchain for Tauri (see [Tauri prerequisites](https://tauri.app/start/prerequisites/))
-
-Install deps:
-
-```sh
+```bash
+git clone https://github.com/saagpatel/LegalDocsReview
+cd LegalDocsReview
 pnpm install
 ```
 
-Run the frontend in the browser:
+### Usage
 
-```sh
+```bash
+# Run in browser (frontend only)
 pnpm dev
-```
 
-Run the desktop app (Tauri):
-
-```sh
+# Run full desktop app (Tauri + Rust backend)
 pnpm tauri dev
 ```
 
-Run the desktop app in lean mode (temporary Rust build cache + auto cleanup on exit):
+AI-assisted features require an OpenAI or Anthropic API key configured in **Settings**.
 
-```sh
-pnpm dev:lean
-```
+## Tech Stack
 
-Build:
+| Layer | Technology |
+|-------|------------|
+| Desktop shell | Tauri 2 |
+| Frontend | React, TypeScript, Vite, Tailwind CSS |
+| Backend | Rust — PDF text extraction, clause parsing, risk logic |
+| AI providers | OpenAI Chat Completions API, Anthropic Claude Messages API |
+| Storage | SQLite via rusqlite (local app data dir) |
+| Testing | Vitest |
 
-```sh
-pnpm build
-```
+## Architecture
 
-Tests:
+All document storage and analysis logic lives in the Rust backend. PDFs are stored in the app data directory; extracted text and analysis results are persisted in a local SQLite database. AI calls are made directly to the configured provider from the Rust layer — the frontend never handles raw API responses for sensitive content. Templates are managed as reusable Rust data structures.
 
-```sh
-pnpm test
-```
+## License
 
-Workspace cleanup:
-
-```sh
-pnpm clean
-```
-
-Targeted heavy-artifact cleanup (keeps dependencies for faster next startup):
-
-```sh
-pnpm clean:heavy
-```
-
-Full local cleanup for reproducible caches (includes dependencies + local cache folders):
-
-```sh
-pnpm clean:full
-```
-
-Deep cleanup (also removes `node_modules`):
-
-```sh
-pnpm clean:deep
-```
-
-Preview cleanup actions without deleting files:
-
-```sh
-pnpm clean:dry-run
-```
-
-## Dev Modes and Disk Tradeoffs
-
-Normal dev (`pnpm tauri dev`):
-
-- Fastest repeat startup because Rust build artifacts are reused from `src-tauri/target`.
-- Uses more disk over time (Rust target artifacts are typically the largest local growth).
-
-Lean dev (`pnpm dev:lean`):
-
-- Runs the same desktop command, but sets `CARGO_TARGET_DIR` to a temporary folder outside the repo.
-- Automatically deletes temporary build cache and runs targeted heavy cleanup when the app exits.
-- Uses less persistent disk in the repo, but startup is slower because Rust artifacts are rebuilt more often.
-
-Cleanup guidance:
-
-- Use `pnpm clean:heavy` for day-to-day disk control without deleting dependencies.
-- Use `pnpm clean:full` when you want to reclaim maximum local space and are okay with reinstall/rebuild cost.
-
-## API Keys / Local Data
-
-- API keys are entered in the app’s Settings screen and stored locally in the app SQLite DB.
-- Uploaded PDFs are copied into the app data directory under `documents/`.
-- `.env` is ignored by git; do not commit secrets.
+MIT
