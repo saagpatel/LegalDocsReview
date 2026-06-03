@@ -60,6 +60,36 @@ AI-assisted features require an OpenAI or Anthropic API key configured in **Sett
 
 All document storage and analysis logic lives in the Rust backend. PDFs are stored in the app data directory; extracted text and analysis results are persisted in a local SQLite database. AI calls are made directly to the configured provider from the Rust layer — the frontend never handles raw API responses for sensitive content. Templates are managed as reusable Rust data structures.
 
+## Current State
+
+**Release Frozen.** All sprints (1–6) are shipped on `origin/main` — AI integration
+(Claude / OpenAI / local Ollama via `src-tauri/src/ai/provider.rs`), risk scoring
+(`risk_rules.rs`), file- and section-level document comparison, template management,
+report generation, and SQLite document/extraction storage. The product surface is complete;
+the remaining gate is release (code signing), not feature work. Full disposition:
+[docs/PORTFOLIO-DISPOSITION.md](docs/PORTFOLIO-DISPOSITION.md).
+
+## Known Risks
+
+- **Uncommitted release-readiness WIP in a local stash** (`r8-legaldocsreview-stash`) —
+  release/CI workflow files, a tests directory, smoke scripts, and `src-tauri` command mods
+  that are *not* on `origin/main`. Review before it is lost.
+- **Two remotes** — `origin` (`saagpatel/LegalDocsReview`) is canonical; `legacy-origin`
+  (`saagar210/LegalDocsReview`) carries 3 low-stakes orphan `chore(codex)` commits. Local
+  `main` was mistakenly tracking `legacy-origin`; corrected to `origin/main`.
+- **Build verification is stale** — `Cargo.toml` was dirty locally during the last pass; the
+  Tauri build has not been re-confirmed on the current toolchain.
+- **AI provider distribution undecided** — bundle Ollama models (large `.app`), require
+  operator-supplied Claude/OpenAI keys, or both. A product decision that blocks the v1 release.
+
+## Next Recommended Move
+
+Release is gated on operator-only steps: (1) review and reconcile the stashed
+release-readiness WIP (land it as its own PR or document why it is abandoned), (2) wire Apple
+Developer ID + notarization, (3) pick the AI provider distribution strategy, then (4) cut a
+`v1.0.0` tag and verify the signed/notarized DMG opens without Gatekeeper warnings. Estimated
+~4 hours once signing credentials are in hand.
+
 ## License
 
 MIT
