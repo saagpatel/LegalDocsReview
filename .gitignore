@@ -7,3 +7,6 @@ target/
 *.tsbuildinfo
 .env
 .DS_Store
+
+# Internal portfolio/disposition notes
+docs/PORTFOLIO-DISPOSITION.md

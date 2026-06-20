@@ -1,83 +1,86 @@
 {
-  "name": "legal-docs-review",
-  "private": true,
-  "version": "0.1.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "dev:lean": "sh ./scripts/dev-lean.sh",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "tauri": "tauri",
-    "clean": "sh ./scripts/clean-workspace.sh",
-    "clean:heavy": "sh ./scripts/clean-heavy.sh",
-    "clean:full": "sh ./scripts/clean-full.sh",
-    "clean:deep": "sh ./scripts/clean-workspace.sh --with-deps",
-    "clean:dry-run": "sh ./scripts/clean-workspace.sh --dry-run",
-    "prepare": "husky",
-    "commit": "cz",
-    "commitlint": "commitlint",
-    "git:guard:branch": "bash scripts/git/guard-branch.sh",
-    "git:guard:no-main-push": "bash scripts/git/guard-no-main-push.sh",
-    "git:guard:atomic": "bash scripts/git/guard-atomic.sh",
-    "git:guard:generated": "bash scripts/git/guard-generated.sh",
-    "git:guard:large-files": "bash scripts/git/guard-large-files.sh",
-    "git:guard:secrets": "bash scripts/git/guard-secrets.sh",
-    "git:guard:all": "pnpm git:guard:branch && pnpm git:guard:atomic && pnpm git:guard:generated && pnpm git:guard:large-files && pnpm git:guard:secrets",
-    "git:commit:propose": "node scripts/git/propose-commit-message.mjs",
-    "git:session:save": "bash scripts/git/session-save.sh",
-    "git:session:resume": "bash scripts/git/session-resume.sh",
-    "pr:notes": "bash scripts/git/generate-pr-notes.sh",
-    "perf:bundle": "node scripts/perf/bundle-report.mjs",
-    "perf:build": "node scripts/perf/measure-build-time.mjs",
-    "perf:assets": "bash scripts/perf/check-assets.sh",
-    "perf:memory": "node --expose-gc scripts/perf/memory-smoke.mjs",
-    "perf:summary": "node scripts/perf/summarize.mjs",
-    "lint-staged": "lint-staged"
-  },
-  "dependencies": {
-    "@tauri-apps/api": "^2.0.0",
-    "@tauri-apps/plugin-dialog": "^2.6.0",
-    "lucide-react": "^0.460.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-dropzone": "^14.3.5",
-    "react-hot-toast": "^2.4.1",
-    "react-router": "^7.0.0"
-  },
-  "devDependencies": {
-    "@tauri-apps/cli": "^2.10.0",
-    "@testing-library/jest-dom": "^6.6.0",
-    "@testing-library/react": "^16.1.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "@vitejs/plugin-react": "^4.3.0",
-    "autoprefixer": "^10.4.20",
-    "jsdom": "^25.0.0",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.7.0",
-    "vite": "^6.0.0",
-    "vitest": "^2.1.0",
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@commitlint/cz-commitlint": "^19.8.1",
-    "@lhci/cli": "^0.15.1",
-    "commitizen": "^4.3.1",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.5.2",
-    "prettier": "^3.6.2"
-  },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,mjs,cjs,json,md,css,scss,yml,yaml}": [
-      "prettier --write"
-    ]
-  }
+	"name": "legal-docs-review",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"dev:lean": "sh ./scripts/dev-lean.sh",
+		"build": "tsc -b && vite build",
+		"preview": "vite preview",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"tauri": "tauri",
+		"clean": "sh ./scripts/clean-workspace.sh",
+		"clean:heavy": "sh ./scripts/clean-heavy.sh",
+		"clean:full": "sh ./scripts/clean-full.sh",
+		"clean:deep": "sh ./scripts/clean-workspace.sh --with-deps",
+		"clean:dry-run": "sh ./scripts/clean-workspace.sh --dry-run",
+		"prepare": "husky",
+		"commit": "cz",
+		"commitlint": "commitlint",
+		"git:guard:branch": "bash scripts/git/guard-branch.sh",
+		"git:guard:no-main-push": "bash scripts/git/guard-no-main-push.sh",
+		"git:guard:atomic": "bash scripts/git/guard-atomic.sh",
+		"git:guard:generated": "bash scripts/git/guard-generated.sh",
+		"git:guard:large-files": "bash scripts/git/guard-large-files.sh",
+		"git:guard:secrets": "bash scripts/git/guard-secrets.sh",
+		"git:guard:all": "pnpm git:guard:branch && pnpm git:guard:atomic && pnpm git:guard:generated && pnpm git:guard:large-files && pnpm git:guard:secrets",
+		"git:commit:propose": "node scripts/git/propose-commit-message.mjs",
+		"git:session:save": "bash scripts/git/session-save.sh",
+		"git:session:resume": "bash scripts/git/session-resume.sh",
+		"pr:notes": "bash scripts/git/generate-pr-notes.sh",
+		"perf:bundle": "node scripts/perf/bundle-report.mjs",
+		"perf:build": "node scripts/perf/measure-build-time.mjs",
+		"perf:assets": "bash scripts/perf/check-assets.sh",
+		"perf:memory": "node --expose-gc scripts/perf/memory-smoke.mjs",
+		"perf:summary": "node scripts/perf/summarize.mjs",
+		"lint-staged": "lint-staged"
+	},
+	"dependencies": {
+		"@tauri-apps/api": "^2.0.0",
+		"@tauri-apps/plugin-dialog": "^2.6.0",
+		"lucide-react": "^0.460.0",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-dropzone": "^14.3.5",
+		"react-hot-toast": "^2.4.1",
+		"react-router": "^7.0.0"
+	},
+	"devDependencies": {
+		"@tauri-apps/cli": "^2.10.0",
+		"@testing-library/jest-dom": "^6.6.0",
+		"@testing-library/react": "^16.1.0",
+		"@types/react": "^19.0.0",
+		"@types/react-dom": "^19.0.0",
+		"@vitejs/plugin-react": "^4.3.0",
+		"autoprefixer": "^10.4.20",
+		"jsdom": "^25.0.0",
+		"postcss": "^8.4.49",
+		"tailwindcss": "^3.4.0",
+		"typescript": "^5.7.0",
+		"vite": "^6.0.0",
+		"vitest": "^2.1.0",
+		"@commitlint/cli": "^19.8.1",
+		"@commitlint/config-conventional": "^19.8.1",
+		"@commitlint/cz-commitlint": "^19.8.1",
+		"@lhci/cli": "^0.15.1",
+		"commitizen": "^4.3.1",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.5.2",
+		"prettier": "^3.6.2"
+	},
+	"config": {
+		"commitizen": {
+			"path": "@commitlint/cz-commitlint"
+		}
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,mjs,cjs,json,md,css,scss,yml,yaml}": [
+			"prettier --write"
+		]
+	},
+	"engines": {
+		"node": ">=18"
+	}
 }
