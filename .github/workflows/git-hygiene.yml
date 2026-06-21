@@ -34,7 +34,9 @@ jobs:
         with:
           script: |
             const branch = context.payload.pull_request?.head?.ref || "";
-            const pattern = /^codex\/(feat|fix|chore|refactor|docs|test|perf|ci|spike|hotfix)\/[a-z0-9]+(?:-[a-z0-9]+)*$/;
+            // Accept Codex-prefixed branches (codex/<type>/slug) and
+            // conventional human-authored branches (<type>/slug).
+            const pattern = /^(?:codex\/)?(feat|fix|chore|refactor|docs|test|perf|ci|spike|hotfix)\/[a-z0-9]+(?:-[a-z0-9]+)*$/;
             if (!pattern.test(branch)) {
               core.setFailed(`Invalid branch name: ${branch}`);
             }

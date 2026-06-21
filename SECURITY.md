@@ -4,7 +4,7 @@
 
 Please **do not** open a public GitHub issue for security vulnerabilities.
 
-Open a [GitHub Security Advisory](../../security/advisories/new) or email the maintainer directly.
+Open a [GitHub Security Advisory](../../security/advisories/new).
 
 Include:
 - Description of the vulnerability

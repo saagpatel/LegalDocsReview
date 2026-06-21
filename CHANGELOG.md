@@ -7,20 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0] - 2026-02-17
+## [0.1.0] - 2026-02-17
 
 ### Added
-- Initialize Legal Document Review Assistant (Sprint 1)
-- Implement all sprints (2-6): AI integration, risk scoring, comparison, templates, reports
-- Lean mode and cleanup workflows
-- README and license
-- Definitive implementation plan: 27 steps to production
-
-### Fixed
-- Delete-failure hook test and log env blocker follow-up
-
-### Changed
-- Finalize codex OS bootstrap baseline
-- Bootstrap codex OS guardrails
-- Aggressively prune dead code and assets
-- Add workspace cleanup commands
+- PDF ingestion and local text extraction (Rust backend)
+- Clause extraction and risk scoring with visual breakdowns
+- Side-by-side document comparison (file-level and section-level)
+- Analysis templates for reusable review workflows
+- Exportable review reports
+- AI-assisted analysis via OpenAI, Anthropic Claude, and local Ollama
+- Local SQLite storage — documents and analysis never leave the machine
+- Workspace cleanup and lean-mode developer scripts
