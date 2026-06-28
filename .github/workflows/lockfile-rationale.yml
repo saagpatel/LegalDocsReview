@@ -3,8 +3,8 @@ name: lockfile-rationale
 on:
   pull_request:
     types: [opened, synchronize, reopened, edited]
+  workflow_dispatch:
 
 jobs:
-  lockfile-rationale:
-    uses: saagpatel/sovereign/.github/workflows/lockfile-rationale.yml@main
-    secrets: inherit
+  enforce:
+    uses: saagpatel/sovereign/.github/workflows/lockfile-rationale.yml@d20fe9e542f3efd545e0135dee4b4314b6af56a6
