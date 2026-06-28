@@ -7,4 +7,4 @@ on:
 
 jobs:
   enforce:
-    uses: saagpatel/sovereign/.github/workflows/lockfile-rationale.yml@d20fe9e542f3efd545e0135dee4b4314b6af56a6
+    uses: saagpatel/sovereign/.github/workflows/lockfile-rationale.yml@3e2f0d5afc466a3b03ff94b62678d27ac7876ec9
