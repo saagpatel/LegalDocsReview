@@ -4,53 +4,8 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, edited]
     branches: [main, master]
+  workflow_dispatch:
 
 jobs:
-  commitlint:
-    if: ${{ !startsWith(github.head_ref, 'dependabot/') && !startsWith(github.head_ref, 'renovate/') }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
-        with:
-          fetch-depth: 0
-      - uses: wagoid/commitlint-github-action@b948419dd99f3fd78a6548d48f94e3df7f6bf3ed
-
-  pr-title:
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: read
-    steps:
-      - uses: amannn/action-semantic-pull-request@48f256284bd46cdaab1048c3721360e808335d50
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  branch-name:
-    if: ${{ !startsWith(github.head_ref, 'dependabot/') && !startsWith(github.head_ref, 'renovate/') }}
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: read
-    steps:
-      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
-        with:
-          script: |
-            const branch = context.payload.pull_request?.head?.ref || "";
-            // Accept Codex-prefixed branches (codex/<type>/slug) and
-            // conventional human-authored branches (<type>/slug).
-            const pattern = /^(?:codex\/)?(feat|fix|chore|refactor|docs|test|perf|ci|spike|hotfix)\/[a-z0-9]+(?:-[a-z0-9]+)*$/;
-            if (!pattern.test(branch)) {
-              core.setFailed(`Invalid branch name: ${branch}`);
-            }
-
-  secrets:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
-        with:
-          fetch-depth: 0
-      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  git-hygiene:
+    uses: saagpatel/sovereign/.github/workflows/git-hygiene.yml@fdd225434bc1185911e53f8df1834ac058949580
