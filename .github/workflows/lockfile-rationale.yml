@@ -6,6 +6,7 @@ on:
 
 jobs:
   enforce:
+    if: ${{ !startsWith(github.head_ref, 'dependabot/') && !startsWith(github.head_ref, 'renovate/') }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
