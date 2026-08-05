@@ -1,0 +1,10 @@
+# Generated lockfiles are owned by their package manager, not by prettier.
+# lint-staged runs `prettier --write` over *.yaml, which would otherwise
+# rewrite every quoted key in pnpm-lock.yaml on any commit that touches it,
+# burying real dependency changes under a whole-file reformat.
+pnpm-lock.yaml
+package-lock.json
+
+# Build output and vendored artifacts.
+dist/
+src-tauri/target/
