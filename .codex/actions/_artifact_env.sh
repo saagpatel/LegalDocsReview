@@ -12,7 +12,7 @@ else
 fi
 
 RUN_ID="${CODEX_RUN_ID:-$(date +%Y%m%dT%H%M%S)-$$}"
-CODEX_CACHE_ROOT="${CODEX_CACHE_ROOT:-/Users/d/Library/Caches/Codex}"
+CODEX_CACHE_ROOT="${CODEX_CACHE_ROOT:-$HOME/Library/Caches/Codex}"
 CODEX_BUILD_ROOT="${CODEX_BUILD_ROOT:-$CODEX_CACHE_ROOT/build}"
 CODEX_LOG_ROOT="${CODEX_LOG_ROOT:-$CODEX_CACHE_ROOT/logs}"
 
