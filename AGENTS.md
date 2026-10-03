@@ -3,11 +3,11 @@
 
 ## What This Project Is
 
-LegalDocsReview is a native desktop app for reviewing contracts and legal documents locally. It uses Tauri, React, and Rust to ingest PDFs, extract text and clauses, score risk, compare documents, and generate reports, with optional AI assistance while keeping documents and analysis in a local SQLite database.
+LegalDocsReview is a native desktop app for reviewing contracts and legal documents. It uses Tauri, React, and Rust to ingest PDFs and extract text locally; clause extraction, risk scoring, document comparison, and report summaries require an AI provider. PDFs are stored in the app data directory; extracted text and analysis results are stored in a local SQLite database. OpenAI and Claude receive document text and extracted clauses for analysis; Ollama can run locally.
 
 ## Current State
 
-All core sprints (1–6) are complete — AI integration (OpenAI, Claude, local Ollama), risk scoring, document comparison, template management, report generation, and SQLite storage. The feature surface is complete; the app is pending code-signing and distribution before a public release.
+All core sprints (1–6) are complete — AI integration (OpenAI, Claude, local Ollama), risk scoring, document comparison, template management, report generation, and SQLite storage. Template comparison and the report Open File action are not implemented; the app is pending code-signing and distribution before a public release.
 
 ## Stack
 
