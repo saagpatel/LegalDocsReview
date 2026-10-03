@@ -20,7 +20,7 @@ LegalDocsReview is a native desktop app built on Tauri + React + Rust. Upload PD
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 22.12+ (22.x), 24.x, or 26+ (the locked Vitest 5 requirement)
 - `pnpm`
 - Rust stable toolchain (`rustup`)
 - Tauri system dependencies: [tauri.app/start/prerequisites](https://tauri.app/start/prerequisites/)
@@ -47,14 +47,14 @@ AI-assisted features require an OpenAI or Anthropic API key, or a locally runnin
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Desktop shell | Tauri 2 |
-| Frontend | React, TypeScript, Vite, Tailwind CSS |
-| Backend | Rust — PDF text extraction, clause parsing, risk logic |
-| AI providers | OpenAI Chat Completions API, Anthropic Claude Messages API, Ollama (local) |
-| Storage | SQLite via rusqlite (local app data dir) |
-| Testing | Vitest |
+| Layer         | Technology                                                                 |
+| ------------- | -------------------------------------------------------------------------- |
+| Desktop shell | Tauri 2                                                                    |
+| Frontend      | React, TypeScript, Vite, Tailwind CSS                                      |
+| Backend       | Rust — PDF text extraction, clause parsing, risk logic                     |
+| AI providers  | OpenAI Chat Completions API, Anthropic Claude Messages API, Ollama (local) |
+| Storage       | SQLite via rusqlite (local app data dir)                                   |
+| Testing       | Vitest                                                                     |
 
 ## Architecture
 
@@ -70,6 +70,10 @@ All core sprints (1–6) are complete — AI integration (OpenAI, Claude, local 
 - Some release-readiness scaffolding is not yet merged
 - AI provider distribution strategy (bundled Ollama models vs. user-supplied API keys)
 - CI/CD pipeline for automated builds
+
+## Developer verification
+
+See [developer verification](docs/VERIFICATION.md) for focused Vitest checks, TypeScript/build and performance gates, and native/provider boundaries.
 
 ## License
 
