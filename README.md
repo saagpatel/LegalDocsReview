@@ -2,9 +2,9 @@
 
 [![Rust](https://img.shields.io/badge/Rust-dea584?style=flat-square&logo=rust)](https://www.rust-lang.org) [![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org) [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
 
-> Review contracts and legal documents on your own machine — AI-assisted clause extraction and risk scoring without uploading sensitive docs to a cloud service.
+> Review contracts and legal documents on your own machine — AI-assisted clause extraction and risk scoring via local Ollama or cloud providers that receive document text and extracted clauses.
 
-LegalDocsReview is a native desktop app built on Tauri + React + Rust. Upload PDFs, extract text and key clauses locally, score risk, compare two documents side by side, and generate review reports — all with optional AI assistance via OpenAI or Anthropic Claude. Documents and analysis stay on your machine in a local SQLite database.
+LegalDocsReview is a native desktop app built on Tauri + React + Rust. Upload PDFs and extract text locally; clause extraction, risk scoring, document comparison, and report summaries use OpenAI, Anthropic Claude, or Ollama. PDFs are stored in the app data directory; extracted text and analysis results are stored in a local SQLite database. Cloud providers receive document text and extracted clauses for analysis.
 
 ## Features
 
@@ -12,7 +12,7 @@ LegalDocsReview is a native desktop app built on Tauri + React + Rust. Upload PD
 - **Clause extraction** — key clauses and fields identified automatically
 - **Risk scoring** — risk distribution per document with visual breakdowns
 - **Document comparison** — diff two contracts to surface changed or missing clauses
-- **Analysis templates** — reusable review templates for different document types
+- **Analysis templates** — store, list, and delete contract-text templates for different document types
 - **Review reports** — exportable reports summarizing findings
 - **Tri-provider AI support** — OpenAI Chat Completions, Anthropic Claude Messages API, or local Ollama (API key stored locally for cloud providers)
 
@@ -58,11 +58,11 @@ AI-assisted features require an OpenAI or Anthropic API key, or a locally runnin
 
 ## Architecture
 
-All document storage and analysis logic lives in the Rust backend. PDFs are stored in the app data directory; extracted text and analysis results are persisted in a local SQLite database. AI calls are made directly to the configured provider from the Rust layer — the frontend never handles raw API responses for sensitive content. Templates are managed as reusable Rust data structures.
+Document storage and analysis orchestration live in the Rust backend. PDFs are stored in the app data directory; extracted text and analysis results are persisted in a local SQLite database. AI calls are made directly to the configured provider from the Rust layer — the frontend receives parsed analysis results rather than raw provider responses. Templates are stored in SQLite; document comparison currently accepts two documents, not templates.
 
 ## Current State
 
-All core sprints (1–6) are complete — AI integration (OpenAI, Claude, local Ollama), risk scoring, document comparison, template management, report generation, and SQLite storage. The feature surface is complete; the app is pending code-signing and distribution before a public release.
+All core sprints (1–6) are complete — AI integration (OpenAI, Claude, local Ollama), risk scoring, document comparison, template management, report generation, and SQLite storage. Template comparison and the report Open File action are not implemented; the app is pending code-signing and distribution before a public release.
 
 ## Roadmap
 

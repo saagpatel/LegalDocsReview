@@ -22,6 +22,6 @@ For backend changes, use `cargo test --locked --manifest-path src-tauri/Cargo.to
 
 ## Conditional UI checks
 
-For changed visible behavior, run the focused component tests and frontend build, then use `pnpm dev -- --host 127.0.0.1` for a browser check with synthetic documents and mocked provider responses. Browser-only mode cannot exercise native PDF extraction or Tauri dialogs. A native/provider check needs its own approved disposable inputs and environment; never use private contracts as a fixture. Documentation-only changes do not require starting the application.
+For changed visible behavior, run the focused component tests and frontend build, then use `pnpm dev --host 127.0.0.1` for a browser check with synthetic documents and mocked provider responses. Browser-only mode cannot exercise native PDF extraction or Tauri dialogs. A native/provider check needs its own approved disposable inputs and environment; never use private contracts as a fixture. Documentation-only changes do not require starting the application.
 
 GitHub performance workflows and CodeQL remain additional hosted gates; local fixture checks do not replace them.
