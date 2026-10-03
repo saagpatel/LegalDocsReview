@@ -1,5 +1,6 @@
 # codex-os-managed
 pnpm git:guard:all
+pnpm test
+npm run perf:build
 pnpm perf:bundle
-pnpm perf:build
 pnpm perf:assets
