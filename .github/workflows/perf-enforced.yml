@@ -6,6 +6,9 @@ on:
     branches: [main, master]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   perf-enforced:
     uses: saagpatel/sovereign/.github/workflows/perf-enforced.yml@fdd225434bc1185911e53f8df1834ac058949580

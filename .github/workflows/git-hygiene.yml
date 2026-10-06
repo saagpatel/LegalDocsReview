@@ -6,6 +6,12 @@ on:
     branches: [main, master]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   git-hygiene:
+    permissions:
+      contents: read
+      pull-requests: read
     uses: saagpatel/sovereign/.github/workflows/git-hygiene.yml@fdd225434bc1185911e53f8df1834ac058949580
